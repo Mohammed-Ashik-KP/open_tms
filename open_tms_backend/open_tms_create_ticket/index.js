@@ -10,6 +10,61 @@ const validateField = (field, fieldName) => {
   return null
 }
 
+/**
+ * @swagger
+ * /open_tms_backend/open_tms_create_ticket:
+ *   post:
+ *     summary: Create a new ticket
+ *     description: Create a new ticket.
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               department:
+ *                 type: string
+ *               ticket_type:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Ticket created successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: string
+ *                 revision_id:
+ *                   type: string
+ *       400:
+ *         description: Bad Request
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 code:
+ *                   type: string
+ *                 message:
+ *                   type: string
+ *       500:
+ *         description: Internal Server Error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 code:
+ *                   type: string
+ *                 message:
+ *                   type: string
+ */
 const handler = async (event) => {
   const { req, res } = event
   const { sendResponse, prisma, validateRequestMethod } = await shared.getShared()
